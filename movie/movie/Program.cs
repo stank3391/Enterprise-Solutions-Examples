@@ -1,7 +1,12 @@
+using movie.Entities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+string? dbConn = builder.Configuration.GetConnectionString("MoviesDb");
+//Add the DB context class as a service to the container
+builder.Services.AddDbContext<MovieDbContent>();
 
 var app = builder.Build();
 
